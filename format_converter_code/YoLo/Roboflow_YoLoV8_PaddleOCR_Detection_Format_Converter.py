@@ -101,18 +101,14 @@ def convert_yolov8_to_paddleocr(yolov8_folder, output_file, image_folder, image_
         print(f"Error writing output file: {e}")
 
 # Example usage
-def main():
-    folders = ["train", "valid", "test"]
-    colors = ['mix']
-    sizes = [640, 320]
-    
+def main(project_name, folders, colors, sizes):    
     for folder in folders:
         for color in colors:
             for size in sizes:
                 # Construct paths
-                yolov8_folder = f'Carrier_number_{size}x{size}_{color}/{folder}/det/labels'
-                output_file = f'Carrier_number_{size}x{size}_{color}/{folder}/det/labels.txt'
-                image_folder = f'Carrier_number_{size}x{size}_{color}/{folder}/det/images'
+                yolov8_folder = f'{project_name}_{size}x{size}_{color}/{folder}/det/labels'
+                output_file = f'{project_name}_{size}x{size}_{color}/{folder}/det/labels.txt'
+                image_folder = f'{project_name}_{size}x{size}_{color}/{folder}/det/images'
                 
                 # Convert annotations
                 convert_yolov8_to_paddleocr(
@@ -124,4 +120,8 @@ def main():
                 )
 
 if __name__ == "__main__":
-    main()
+    project_name = 'Carrier_number'
+    folders = ['train', 'valid', 'test']
+    sizes = [320]
+    colors = ['rgb']
+    main(project_name, folders, colors, sizes)
