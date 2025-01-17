@@ -65,8 +65,8 @@ def crop_and_convert_yolov8_to_paddleocr(yolov8_folder, output_cropped_folder, o
 
 if __name__ == "__main__":
     folders = ["train", "valid", "test"]
-    colors = ['mix']
-    sizes = [640, 320]
+    colors = ['rgb']
+    sizes = [320]
     for folder in folders:
         for color in colors:
             for size in sizes:
